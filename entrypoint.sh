@@ -26,8 +26,9 @@ git clone --single-branch --branch $INPUT_DESTINATION_BRANCH "https://x-access-t
 
 echo "Copying contents to git repo"
 mkdir -p $CLONE_DIR/$INPUT_DESTINATION_FOLDER
-echo "$GITHUB_WORKSPACE"
-# git rm --git-dir "$CLONE_DIR/.git" -r .
+cd "$CLONE_DIR"
+git rm -r .
+cd "$GITHUB_WORKSPACE"
 cp -R "$INPUT_SOURCE_FILE" "$CLONE_DIR/$INPUT_DESTINATION_FOLDER"
 cd "$CLONE_DIR"
 
